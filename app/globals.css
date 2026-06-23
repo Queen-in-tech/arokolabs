@@ -2,9 +2,6 @@
 
 @import "tailwindcss";
 
-
-
-
 @theme {
   --font-display: "Space Grotesk", sans-serif;
   --font-body: "Inter", sans-serif;
@@ -31,19 +28,9 @@
 
   --radius: 0.75rem;
 
-  --animate-accordion-down: accordion-down 0.2s ease-out;
-  --animate-accordion-up: accordion-up 0.2s ease-out;
   --animate-fade-in-up: fade-in-up 0.6s ease-out forwards;
   --animate-pulse-glow: pulse-glow 3s ease-in-out infinite;
 
-  @keyframes accordion-down {
-    from { height: 0; }
-    to { height: var(--radix-accordion-content-height); }
-  }
-  @keyframes accordion-up {
-    from { height: var(--radix-accordion-content-height); }
-    to { height: 0; }
-  }
   @keyframes fade-in-up {
     from { opacity: 0; transform: translateY(24px); }
     to { opacity: 1; transform: translateY(0); }
@@ -54,7 +41,6 @@
   }
 }
 
-/* Dark mode overrides */
 .dark {
   --color-background: hsl(220 20% 6%);
   --color-foreground: hsl(40 10% 92%);
@@ -76,7 +62,7 @@
 }
 
 @layer base {
-  * { border-color: var(--color-border); }
+  * { border-color: var(--color-border); box-sizing: border-box; }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
@@ -93,32 +79,23 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-  .bg-gradient-gold {
-    background: linear-gradient(135deg, var(--color-primary), hsl(28 90% 45%));
-  }
-  .bg-gradient-card {
-    background: var(--color-card);
-  }
-  .shadow-gold {
-    box-shadow: 0 0 40px -10px hsl(38 92% 50% / 0.25);
-  }
-  .shadow-card {
-    box-shadow: 0 4px 24px -4px hsl(220 20% 12% / 0.08);
-  }
+  .bg-gradient-gold { background: linear-gradient(135deg, var(--color-primary), hsl(28 90% 45%)); }
+  .bg-gradient-card { background: var(--color-card); }
+  .shadow-gold { box-shadow: 0 0 40px -10px hsl(38 92% 50% / 0.25); }
+  .shadow-card { box-shadow: 0 4px 24px -4px hsl(220 20% 12% / 0.08); }
   .grid-pattern {
     background-image:
-      linear-gradient(hsl(220 15% 12% / 1) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(220 15% 12% / 1) 1px, transparent 1px);
+      linear-gradient(hsl(220 15% 50% / 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(220 15% 50% / 0.08) 1px, transparent 1px);
     background-size: 60px 60px;
   }
   .font-display { font-family: var(--font-display); }
   .font-body { font-family: var(--font-body); }
-}
 
-@layer utilities {
-  .container {
+  /* Safe container that won't conflict with Tailwind v4 */
+  .wrap {
     width: 100%;
-    max-width: 1280px;
+    max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
     padding-left: 1.5rem;

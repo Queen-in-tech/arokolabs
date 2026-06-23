@@ -10,7 +10,7 @@ export default function AboutClient() {
     <Layout>
       <section className="relative overflow-hidden border-b border-border">
         <div className="absolute inset-0 grid-pattern opacity-20" />
-        <div className="container relative py-20 text-center md:py-28">
+        <div className="wrap relative py-20 text-center md:py-28">
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <span className="mb-4 inline-block font-display text-xs font-semibold uppercase tracking-widest text-primary">About</span>
             <h1 className="font-display text-4xl font-bold text-foreground md:text-5xl lg:text-6xl">
@@ -36,7 +36,7 @@ export default function AboutClient() {
       </section>
 
       <section className="border-b border-border bg-card py-16 md:py-24">
-        <div className="container text-center">
+        <div className="wrap text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
             <h2 className="mb-4 font-display text-3xl font-bold text-foreground">Our Mission</h2>
             <p className="mx-auto max-w-2xl font-body text-lg text-muted-foreground">

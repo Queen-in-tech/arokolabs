@@ -16,7 +16,7 @@ export default function CaseStudiesClient() {
     <Layout>
       <section className="relative overflow-hidden border-b border-border">
         <div className="absolute inset-0 grid-pattern opacity-20" />
-        <div className="container relative py-20 text-center md:py-28">
+        <div className="wrap relative py-20 text-center md:py-28">
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <span className="mb-4 inline-block font-display text-xs font-semibold uppercase tracking-widest text-primary">Case Studies</span>
             <h1 className="font-display text-4xl font-bold text-foreground md:text-5xl lg:text-6xl">
@@ -27,7 +27,7 @@ export default function CaseStudiesClient() {
       </section>
 
       <section className="py-16 md:py-24">
-        <div className="container space-y-16">
+        <div className="wrap space-y-16">
           {studies.map((study, i) => (
             <motion.div key={study.id} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: i * 0.1 }} className="rounded-2xl border border-border bg-gradient-card p-8 shadow-card md:p-12">
               <span className="mb-2 inline-block font-display text-xs font-semibold uppercase tracking-wider text-primary">{study.industry}</span>

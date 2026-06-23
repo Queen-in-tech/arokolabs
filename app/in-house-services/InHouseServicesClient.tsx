@@ -23,7 +23,7 @@ export default function InHouseServicesClient() {
     <Layout>
       <section className="relative overflow-hidden border-b border-border">
         <div className="absolute inset-0 grid-pattern opacity-20" />
-        <div className="container relative py-20 text-center md:py-28">
+        <div className="wrap relative py-20 text-center md:py-28">
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <span className="mb-4 inline-block font-display text-xs font-semibold uppercase tracking-widest text-primary">In-House Services</span>
             <h1 className="font-display text-4xl font-bold text-foreground md:text-5xl lg:text-6xl">
