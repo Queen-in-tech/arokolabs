@@ -28,7 +28,7 @@ export default function InsightsClient() {
         </div>
       </section>
 
-      <section className="py-16 md:py-24">
+      <section className="py-16 md:py-24 px-2 md:px-12">
         <div className="container">
           <div className="grid gap-8 md:grid-cols-2">
             {posts.map((post, i) => (

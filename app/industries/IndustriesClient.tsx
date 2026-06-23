@@ -31,7 +31,7 @@ export default function IndustriesClient() {
         </div>
       </section>
 
-      <section className="py-16 md:py-24">
+      <section className="py-16 md:py-24 px-2 md:px-12">
         <div className="container">
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {industries.map((ind, i) => (

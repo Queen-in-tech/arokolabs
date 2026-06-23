@@ -26,8 +26,8 @@ export default function AboutClient() {
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
               <h2 className="mb-6 font-display text-3xl font-bold text-foreground">The Meaning of Àrokò</h2>
               <div className="space-y-4 font-body text-base leading-relaxed text-muted-foreground">
-                <p><span className="text-foreground font-medium">Àrokò</span> historically referred to symbolic communication systems in Yoruba culture — encoded objects and signs that carried complex messages between communities without written language.</p>
-                <p>Àrokò Labs carries this legacy forward. We build modern intelligent systems that allow organizations and machines to communicate and operate automatically — translating complex business logic into seamless automated workflows.</p>
+                <p><span className="text-foreground font-medium">Àrokò</span> historically referred to symbolic communication systems in Yoruba culture, encoded objects and signs that carried complex messages between communities without written language.</p>
+                <p>Àrokò Labs carries this legacy forward. We build modern intelligent systems that allow organizations and machines to communicate and operate automatically, translating complex business logic into seamless automated workflows.</p>
                 <p>Just as the original Àrokò encoded meaning into physical symbols, we encode business intelligence into systems that run themselves.</p>
               </div>
             </motion.div>
@@ -40,7 +40,7 @@ export default function AboutClient() {
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
             <h2 className="mb-4 font-display text-3xl font-bold text-foreground">Our Mission</h2>
             <p className="mx-auto max-w-2xl font-body text-lg text-muted-foreground">
-              To build intelligent systems that empower organizations and governments to operate at their highest potential — eliminating inefficiency, unlocking data, and scaling impact through automation.
+              To build intelligent systems that empower organizations and governments to operate at their highest potential, eliminating inefficiency, unlocking data, and scaling impact through automation.
             </p>
           </motion.div>
         </div>

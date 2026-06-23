@@ -36,7 +36,7 @@ export default function InHouseServicesClient() {
         </div>
       </section>
 
-      <section className="border-b border-border py-16 md:py-24">
+      <section className="border-b border-border py-16 md:py-24 px-2 md:px-12">
         <div className="container">
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {services.map((service, i) => (
@@ -52,7 +52,7 @@ export default function InHouseServicesClient() {
         </div>
       </section>
 
-      <section className="py-16 md:py-24">
+      <section className="py-16 md:py-24 px-2 md:px-12">
         <div className="container">
           <div className="mb-12 text-center">
             <h2 className="font-display text-3xl font-bold text-foreground">Retainer Plans</h2>

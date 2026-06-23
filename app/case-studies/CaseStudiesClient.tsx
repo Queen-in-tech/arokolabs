@@ -26,7 +26,7 @@ export default function CaseStudiesClient() {
         </div>
       </section>
 
-      <section className="py-16 md:py-24">
+      <section className="py-16 md:py-24 px-2 md:px-12">
         <div className="wrap space-y-16">
           {studies.map((study, i) => (
             <motion.div key={study.id} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: i * 0.1 }} className="rounded-2xl border border-border bg-gradient-card p-8 shadow-card md:p-12">

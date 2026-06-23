@@ -23,7 +23,7 @@ const Navbar = () => {
   const { theme, toggle } = useTheme();
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-[--color-border]/50 bg-[--color-background]/80 backdrop-blur-xl">
+    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-[--color-border]/50 bg-[--color-background]/80 backdrop-blur-xl px-6">
       <div className="wrap flex h-16 items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
           <Image src="/logo4.png" alt="Àrokò Labs" width={80} height={52} className="h-12 w-auto" />

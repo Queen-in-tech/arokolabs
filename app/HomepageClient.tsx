@@ -81,11 +81,11 @@ export default function HomepageClient() {
     <Layout>
 
       {/* ── HERO ── */}
-      <section className="relative overflow-hidden bg-[--color-background]">
+      <section className="relative overflow-hidden bg-[--color-background] mx-auto w-full">
         <div className="absolute inset-0 grid-pattern" />
         <div className="absolute -top-40 right-0 w-[600px] h-[600px] rounded-full bg-[--color-primary]/5 blur-[120px] pointer-events-none" />
-        <div className="wrap relative py-28 md:py-40 lg:py-48">
-          <MotionDiv initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="max-w-3xl">
+        <div className="wrap relative py-28 md:py-32 lg:py-28">
+          <MotionDiv initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="max-w-3xl mx-auto text-center">
             <span className="mb-6 inline-block rounded-full border border-[--color-primary]/30 bg-[--color-primary]/10 px-4 py-1.5 font-display text-xs font-semibold uppercase tracking-widest text-[--color-primary]">
               AI Operations Partner
             </span>
@@ -93,16 +93,16 @@ export default function HomepageClient() {
               We run your operations<br />
               using <span className="text-gradient-gold">AI systems.</span>
             </h1>
-            <p className="mt-6 max-w-xl font-body text-xl text-[--color-muted-foreground] leading-relaxed">
-              We replace manual business operations with AI-driven systems that execute work automatically — so your team stops doing repetitive work and starts focusing on growth.
+            <p className="mt-6 max-w-3xl font-body text-xl text-[--color-muted-foreground] leading-relaxed">
+              We replace manual business operations with AI-driven systems that execute work automatically, so your team stops doing repetitive work and starts focusing on growth.
             </p>
-            <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-10 flex flex-col gap-3 sm:flex-row justify-center">
               <Link href="/contact">
                 <Button variant="hero" size="lg" className="text-base px-8">
                   Book an Operations Review <ArrowRight className="ml-2" size={18} />
                 </Button>
               </Link>
-              <a href="https://wa.me/2349000000000" target="_blank" rel="noopener noreferrer">
+              <a href="https://wa.me/2347170573130" target="_blank" rel="noopener noreferrer">
                 <Button variant="hero-outline" size="lg" className="text-base px-8">
                   Chat on WhatsApp
                 </Button>
@@ -113,7 +113,7 @@ export default function HomepageClient() {
       </section>
 
       {/* ── PROBLEM ── */}
-      <section className="bg-[--color-card] border-y border-[--color-border]">
+      <section className="bg-[--color-card] border-y border-[--color-border] px-12">
         <div className="wrap py-16 md:py-24">
           <MotionDiv {...fadeUp} className="max-w-2xl mb-12">
             <span className="mb-3 inline-block font-display text-xs font-semibold uppercase tracking-widest text-[--color-primary]">The Problem</span>
@@ -148,7 +148,7 @@ export default function HomepageClient() {
       </section>
 
       {/* ── PACKAGES ── */}
-      <section className="bg-[--color-card] border-y border-[--color-border]">
+      <section className="bg-[--color-card] border-y border-[--color-border] px-10">
         <div className="wrap py-16 md:py-24">
           <MotionDiv {...fadeUp} className="mb-12 text-center">
             <span className="mb-3 inline-block font-display text-xs font-semibold uppercase tracking-widest text-[--color-primary]">How We Work</span>
@@ -187,7 +187,7 @@ export default function HomepageClient() {
       </section>
 
       {/* ── SYSTEM EXAMPLES ── */}
-      <section className="bg-[--color-background]">
+      <section className="bg-[--color-background] px-10">
         <div className="wrap py-16 md:py-24">
           <MotionDiv {...fadeUp} className="mb-12">
             <span className="mb-3 inline-block font-display text-xs font-semibold uppercase tracking-widest text-[--color-primary]">System Examples</span>
@@ -274,7 +274,7 @@ export default function HomepageClient() {
               <Link href="/contact">
                 <Button variant="hero" size="lg" className="text-base px-8">Book an Operations Review <ArrowRight className="ml-2" size={18} /></Button>
               </Link>
-              <a href="https://wa.me/2349000000000" target="_blank" rel="noopener noreferrer">
+              <a href="https://wa.me/2347071573130" target="_blank" rel="noopener noreferrer">
                 <Button variant="hero-outline" size="lg" className="text-base px-8">Chat on WhatsApp</Button>
               </a>
             </div>

@@ -35,7 +35,7 @@ export default function ContactClient() {
         </div>
       </section>
 
-      <section className="py-16 md:py-24">
+      <section className="py-16 md:py-24 px-6 md:px-12">
         <div className="container">
           <div className="grid gap-12 lg:grid-cols-3">
             {/* Info */}

@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 const Footer = () => (
-  <footer className="border-t border-[--color-border] bg-[--color-card]">
+  <footer className="border-t border-[--color-border] bg-[--color-card] px-8">
     <div className="wrap py-12">
       <div className="grid gap-8 md:grid-cols-4">
         <div>

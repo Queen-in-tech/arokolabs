@@ -35,7 +35,7 @@ export default function SolutionsClient() {
 
       {sections.map((section, i) => (
         <section key={section.title} className={`border-b border-border ${i % 2 === 0 ? "" : "bg-card"}`}>
-          <div className="wrap py-16 md:py-24">
+          <div className="wrap py-16 md:py-24 p-2 md:px-12">
             <div className="grid items-start gap-12 md:grid-cols-2">
               <motion.div initial={{ opacity: 0, x: -24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
                 <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
