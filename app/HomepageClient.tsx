@@ -1,9 +1,8 @@
-"use client";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
 import SectionHeading from "@/components/SectionHeading";
+import { MotionDiv, MotionSection, MotionArticle } from "@/components/MotionDiv";
 import { ArrowRight, Zap, Bot, Link2, BarChart3, Search, Users, FileText, Headphones, Globe, ExternalLink } from "lucide-react";
 
 const fadeUp = {
@@ -70,23 +69,26 @@ export default function HomepageClient() {
       <section className="relative overflow-hidden bg-background">
         <div className="absolute inset-0 grid-pattern opacity-30" />
         <div className="absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full bg-primary/8 blur-[100px]" />
-        <div className="absolute bottom-0 left-0 w-[300px] h-[300px] rounded-full bg-primary/5 blur-[80px]" />
         <div className="container relative flex flex-col items-center py-24 text-center md:py-36 lg:py-44">
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
+          <MotionDiv initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
             <span className="mb-4 inline-block rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 font-display text-xs font-semibold uppercase tracking-widest text-primary">
               AI Automation & Software Development Studio
             </span>
-          </motion.div>
-          <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.1 }} className="font-display text-4xl font-bold leading-[1.1] text-foreground md:text-6xl lg:text-7xl max-w-4xl">
-            Intelligent Agents for the Modern{" "}<span className="text-gradient-gold">Enterprise</span>
-          </motion.h1>
-          <motion.p initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }} className="mt-6 max-w-2xl font-body text-lg text-muted-foreground md:text-xl">
-            We build intelligent automation workflows and refined digital experiences for businesses ready to operate at the next level.
-          </motion.p>
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.3 }} className="mt-8 flex flex-col gap-3 sm:flex-row">
+          </MotionDiv>
+          <MotionDiv initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.1 }}>
+            <h1 className="font-display text-4xl font-bold leading-[1.1] text-foreground md:text-6xl lg:text-7xl max-w-4xl">
+              Intelligent Agents for the Modern{" "}<span className="text-gradient-gold">Enterprise</span>
+            </h1>
+          </MotionDiv>
+          <MotionDiv initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }}>
+            <p className="mt-6 max-w-2xl font-body text-lg text-muted-foreground md:text-xl">
+              We build intelligent automation workflows and refined digital experiences for businesses ready to operate at the next level.
+            </p>
+          </MotionDiv>
+          <MotionDiv initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.3 }} className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Link href="/contact"><Button variant="hero" size="lg" className="text-base">Book A Free Audit <ArrowRight className="ml-1" size={18} /></Button></Link>
             <Link href="/solutions"><Button variant="hero-outline" size="lg" className="text-base">See Solutions</Button></Link>
-          </motion.div>
+          </MotionDiv>
         </div>
       </section>
 
@@ -96,7 +98,7 @@ export default function HomepageClient() {
       <section className="bg-card">
         <div className="container py-12 md:py-20">
           <SectionHeading label="The Problem" title="Your Business Should Run Like a System, Not a Set of Tasks." description="Nigerian enterprises in 2026 face unique pressures. Manual processes aren't just inefficient — they're existential risks." />
-          <motion.div {...fadeUp} className="mx-auto grid max-w-4xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <MotionDiv {...fadeUp} className="mx-auto grid max-w-4xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {[
               { label: "High Operational Costs", detail: "Manual data entry is an invisible tax on your growth." },
               { label: "Naira Volatility", detail: "Efficiency is no longer optional — it's your best hedge against inflation." },
@@ -113,7 +115,7 @@ export default function HomepageClient() {
                 <p className="font-body text-xs text-muted-foreground">{item.detail}</p>
               </div>
             ))}
-          </motion.div>
+          </MotionDiv>
         </div>
       </section>
 
@@ -125,7 +127,7 @@ export default function HomepageClient() {
           <SectionHeading label="What We Do" title="Automation That Transforms Operations" />
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {solutions.map((s, i) => (
-              <motion.div key={s.title} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.1 }}>
+              <MotionDiv key={s.title} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.1 }}>
                 <Link href={s.link} className="group flex h-full flex-col rounded-xl border border-border bg-gradient-card p-6 shadow-card transition-all hover:border-primary/30 hover:shadow-gold">
                   <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
                     <s.icon className="text-primary" size={24} />
@@ -136,7 +138,7 @@ export default function HomepageClient() {
                     Learn more <ArrowRight className="ml-1" size={14} />
                   </span>
                 </Link>
-              </motion.div>
+              </MotionDiv>
             ))}
           </div>
         </div>
@@ -150,16 +152,16 @@ export default function HomepageClient() {
           <SectionHeading label="The Àrokò Method" title="How We Work" description="We demystify AI adoption in four clear steps." />
           <div className="mx-auto grid max-w-4xl gap-8 md:grid-cols-4">
             {steps.map((step, i) => (
-              <motion.div key={step.num} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.15 }} className="relative text-center">
+              <MotionDiv key={step.num} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.15 }} className="relative text-center">
                 <span className="font-display text-5xl font-bold text-primary/20">{step.num}</span>
                 <h3 className="mt-2 font-display text-xl font-semibold text-foreground">{step.title}</h3>
                 <p className="mt-2 font-body text-sm text-muted-foreground">{step.desc}</p>
-              </motion.div>
+              </MotionDiv>
             ))}
           </div>
-          <motion.div {...fadeUp} className="mt-12 text-center">
+          <MotionDiv {...fadeUp} className="mt-12 text-center">
             <Link href="/contact"><Button variant="hero" size="lg">Schedule an Audit <ArrowRight className="ml-1" size={18} /></Button></Link>
-          </motion.div>
+          </MotionDiv>
         </div>
       </section>
 
@@ -171,14 +173,14 @@ export default function HomepageClient() {
           <SectionHeading label="Lab Projects" title="Built, Not Pitched" description="We show, don't tell. Explore working systems from our lab." />
           <div className="grid gap-6 md:grid-cols-3">
             {labProjects.map((project, i) => (
-              <motion.div key={project.title} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.1 }} className="group flex flex-col rounded-xl border border-border bg-gradient-card p-6 shadow-card transition-all hover:border-primary/30">
+              <MotionDiv key={project.title} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.1 }} className="group flex flex-col rounded-xl border border-border bg-gradient-card p-6 shadow-card transition-all hover:border-primary/30">
                 <span className="mb-3 inline-block w-fit rounded-full bg-primary/10 px-3 py-1 font-display text-xs font-semibold text-primary">{project.tag}</span>
                 <h3 className="mb-2 font-display text-lg font-semibold text-foreground">{project.title}</h3>
                 <p className="flex-1 font-body text-sm text-muted-foreground">{project.desc}</p>
-                <Link href={project.link} className="mt-4 inline-flex items-center font-display text-sm font-medium text-primary transition-opacity">
+                <Link href={project.link} className="mt-4 inline-flex items-center font-display text-sm font-medium text-primary">
                   {project.cta} <ExternalLink className="ml-1" size={14} />
                 </Link>
-              </motion.div>
+              </MotionDiv>
             ))}
           </div>
         </div>
@@ -192,13 +194,13 @@ export default function HomepageClient() {
           <SectionHeading label="Use Cases" title="Automation Scenarios" description="See how intelligent automation transforms key business processes." />
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {scenarios.map((s, i) => (
-              <motion.div key={s.title} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.1 }} className="rounded-xl border border-border bg-gradient-card p-6 shadow-card">
+              <MotionDiv key={s.title} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.1 }} className="rounded-xl border border-border bg-gradient-card p-6 shadow-card">
                 <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
                   <s.icon className="text-primary" size={20} />
                 </div>
                 <h3 className="mb-2 font-display text-base font-semibold text-foreground">{s.title}</h3>
                 <p className="font-body text-sm text-muted-foreground">{s.desc}</p>
-              </motion.div>
+              </MotionDiv>
             ))}
           </div>
         </div>
@@ -206,20 +208,20 @@ export default function HomepageClient() {
 
       <WaveDivider fillClass="fill-card" variant={4} />
 
-      {/* Case Studies Preview */}
+      {/* Case Studies */}
       <section className="bg-card">
         <div className="container py-12 md:py-20">
           <SectionHeading label="Results" title="Measurable Automation Outcomes" />
           <div className="grid gap-6 md:grid-cols-3">
             {caseStudies.map((cs, i) => (
-              <motion.div key={cs.title} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.1 }}>
+              <MotionDiv key={cs.title} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.1 }}>
                 <Link href="/case-studies" className="group flex h-full flex-col rounded-xl border border-border bg-secondary/30 p-6 transition-all hover:border-primary/30">
                   <span className="mb-2 font-display text-xs font-semibold uppercase tracking-wider text-primary">{cs.industry}</span>
                   <h3 className="mb-3 font-display text-lg font-semibold text-foreground">{cs.title}</h3>
                   <p className="flex-1 font-body text-sm text-muted-foreground">{cs.desc}</p>
                   <span className="mt-4 inline-flex items-center font-display text-sm font-medium text-primary">Read case study <ArrowRight className="ml-1" size={14} /></span>
                 </Link>
-              </motion.div>
+              </MotionDiv>
             ))}
           </div>
         </div>
@@ -230,13 +232,13 @@ export default function HomepageClient() {
       {/* Final CTA */}
       <section className="bg-background">
         <div className="container py-20 text-center md:py-28">
-          <motion.div {...fadeUp}>
+          <MotionDiv {...fadeUp}>
             <h2 className="font-display text-3xl font-bold text-foreground md:text-5xl">Let Your Systems Do the Work.</h2>
             <p className="mx-auto mt-4 max-w-xl font-body text-lg text-muted-foreground">Stop losing time to manual processes. Let Àrokò Labs build efficient automation that scales with you.</p>
             <Link href="/contact">
-              <Button variant="hero" size="lg" className="mt-8 text-base animate-pulse-glow">Book a 15-Min Efficiency Audit <ArrowRight className="ml-1" size={18} /></Button>
+              <Button variant="hero" size="lg" className="mt-8 text-base">Book a 15-Min Efficiency Audit <ArrowRight className="ml-1" size={18} /></Button>
             </Link>
-          </motion.div>
+          </MotionDiv>
         </div>
       </section>
     </Layout>
