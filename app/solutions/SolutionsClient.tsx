@@ -20,7 +20,7 @@ export default function SolutionsClient() {
     <Layout>
       <section className="relative overflow-hidden border-b border-border">
         <div className="absolute inset-0 grid-pattern opacity-20" />
-        <div className="container relative py-20 text-center md:py-28">
+        <div className="wrap relative py-20 text-center md:py-28">
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <span className="mb-4 inline-block font-display text-xs font-semibold uppercase tracking-widest text-primary">Solutions</span>
             <h1 className="font-display text-4xl font-bold text-foreground md:text-5xl lg:text-6xl">
@@ -35,7 +35,7 @@ export default function SolutionsClient() {
 
       {sections.map((section, i) => (
         <section key={section.title} className={`border-b border-border ${i % 2 === 0 ? "" : "bg-card"}`}>
-          <div className="container py-16 md:py-24">
+          <div className="wrap py-16 md:py-24">
             <div className="grid items-start gap-12 md:grid-cols-2">
               <motion.div initial={{ opacity: 0, x: -24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
                 <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">

@@ -5,10 +5,10 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 export const metadata: Metadata = {
   metadataBase: new URL("https://arokolabs.com"),
   title: {
-    default: "Àrokò Labs — AI Automation & Intelligent Systems",
+    default: "Àrokò Labs — AI Operations Partner",
     template: "%s | Àrokò Labs",
   },
-  description: "Àrokò Labs designs AI-powered automation systems that eliminate repetitive work and help organizations scale faster.",
+  description: "We replace manual business workflows with AI-driven systems that execute work automatically.",
   authors: [{ name: "Àrokò Labs" }],
   openGraph: {
     type: "website",
@@ -37,7 +37,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               name: "Àrokò Labs",
               url: "https://arokolabs.com",
               logo: "https://arokolabs.com/logo4.png",
-              description: "Àrokò Labs designs AI-powered automation systems that eliminate repetitive work and help organizations scale faster.",
+              description: "We replace manual business workflows with AI-driven systems that execute work automatically.",
               sameAs: [
                 "https://www.instagram.com/arokolabs",
                 "https://www.linkedin.com/company/aroko-labs",

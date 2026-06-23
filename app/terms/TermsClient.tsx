@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 export default function TermsClient() {
   return (
     <Layout>
-      <section className="container py-20 md:py-28">
+      <section className="wrap py-20 md:py-28">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="mx-auto max-w-3xl">
           <h1 className="mb-8 font-display text-4xl font-bold text-foreground">Terms of Service</h1>
           <div className="space-y-8 font-body text-muted-foreground">

@@ -1,246 +1,287 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
-import SectionHeading from "@/components/SectionHeading";
-import { MotionDiv, MotionSection, MotionArticle } from "@/components/MotionDiv";
-import { ArrowRight, Zap, Bot, Link2, BarChart3, Search, Users, FileText, Headphones, Globe, ExternalLink } from "lucide-react";
+import { MotionDiv } from "@/components/MotionDiv";
+import { ArrowRight, CheckCircle, Zap, BarChart3, MessageSquare, Users, FileText, Search } from "lucide-react";
 
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
   whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, margin: "-60px" },
+  viewport: { once: true, margin: "-60px" } as const,
   transition: { duration: 0.5 },
 };
 
-const solutions = [
-  { icon: Globe, title: "Website & Web App Development", desc: "Modern, high-performance websites and web applications built to grow your business.", link: "/solutions" },
-  { icon: Zap, title: "AI Workflow Automation", desc: "Automate repetitive tasks and complex business processes with intelligent workflows.", link: "/solutions" },
-  { icon: Bot, title: "AI Assistants", desc: "Deploy intelligent support systems that learn and respond to your customers and teams.", link: "/solutions" },
-  { icon: Link2, title: "System Integrations", desc: "Connect your tools, platforms, and data sources into a unified automated ecosystem.", link: "/solutions" },
-  { icon: BarChart3, title: "Data Intelligence", desc: "Transform raw data into automated insights, reports, and predictive analytics.", link: "/solutions" },
+const problems = [
+  "Your team spends hours on manual data entry and coordination",
+  "Leads come in through WhatsApp and fall through the cracks",
+  "Reporting is done manually in spreadsheets every week",
+  "Every process depends on a specific person being available",
+  "You have tools — but nothing talks to anything else",
+  "Execution is slow because humans are in every loop",
 ];
 
-const steps = [
-  { num: "01", title: "Audit", desc: "We begin with a discovery call to understand your current workflows, tools, and manual processes. We identify bottlenecks, inefficiencies, and gaps so the solution fits your actual needs." },
-  { num: "02", title: "Build", desc: "We design the blueprint that connects your tools and workflows. We map out how data flows, who handles each task, and how processes can move automatically." },
-  { num: "03", title: "Deploy", desc: "We deploy the solution, integrating your tools and workflows so the system starts running immediately — using automation platforms, workflow engines, or AI agents as needed." },
-  { num: "04", title: "Implementation", desc: "We don't just deploy and leave. We monitor performance, refine the workflows, and adjust the system until it operates seamlessly." },
+const packages = [
+  {
+    icon: Search,
+    name: "Operations Audit",
+    desc: "We map your current workflows, identify every manual step, and produce a clear automation blueprint with quick wins and long-term priorities.",
+    deliverable: "Automation blueprint + priority roadmap",
+    timeline: "1 week",
+  },
+  {
+    icon: Zap,
+    name: "AI Workflow Setup",
+    desc: "We build the automations. Lead routing, CRM updates, invoice processing, reporting, WhatsApp flows — whichever processes are costing you the most time.",
+    deliverable: "Live automated workflows",
+    timeline: "2–4 weeks",
+    featured: true,
+  },
+  {
+    icon: BarChart3,
+    name: "Managed Automation",
+    desc: "We maintain, monitor, and continuously improve your automation layer. Systems stay running. New processes get automated as your business evolves.",
+    deliverable: "Monthly optimization + reporting",
+    timeline: "Ongoing retainer",
+  },
 ];
 
-const scenarios = [
-  { icon: Search, title: "Lead Generation", desc: "Automatically capture, qualify, and route leads to your sales team." },
-  { icon: Users, title: "HR Onboarding", desc: "Streamline employee onboarding with automated workflows and document management." },
-  { icon: FileText, title: "Invoice Processing", desc: "Automate invoice capture, validation, approval, and payment processing." },
-  { icon: Headphones, title: "Customer Support", desc: "AI-powered support that resolves queries instantly and escalates intelligently." },
+const systems = [
+  {
+    icon: Users,
+    title: "Lead Routing System",
+    before: "Leads collected manually in a spreadsheet, followed up hours later",
+    after: "Lead captured → scored → assigned → follow-up triggered in under 2 minutes",
+    impact: "3× faster response time",
+  },
+  {
+    icon: FileText,
+    title: "Invoice Automation",
+    before: "6 manual steps from invoice receipt to payment approval",
+    after: "Invoice received → extracted → validated → routed → logged automatically",
+    impact: "6 steps reduced to 1",
+  },
+  {
+    icon: MessageSquare,
+    title: "WhatsApp-to-CRM Flow",
+    before: "Customer messages handled manually, no record kept in CRM",
+    after: "WhatsApp message → parsed → CRM updated → response triggered automatically",
+    impact: "Zero manual data entry",
+  },
+  {
+    icon: BarChart3,
+    title: "Reporting Agent",
+    before: "Team spends 3–4 hours every Friday compiling reports manually",
+    after: "Data pulled, compiled, formatted, and delivered automatically every week",
+    impact: "4 hours saved weekly",
+  },
 ];
-
-const labProjects = [
-  { title: "Nigerian Bill Summarizer", desc: "AI agent that reads, summarizes, and tracks Nigerian legislative bills in plain language.", tag: "Civic AI", cta: "Try it now", link: "#" },
-  { title: "Retail Inventory Reconciliation", desc: "Automated a retail chain's inventory reconciliation across 12 locations, saving 35 hours/week.", tag: "Logistics", cta: "View case study", link: "/case-studies" },
-  { title: "WhatsApp Order Agent", desc: "End-to-end order placement and tracking via WhatsApp for an e-commerce brand.", tag: "E-commerce", cta: "View case study", link: "/case-studies" },
-];
-
-const caseStudies = [
-  { title: "60% Reduction in Support Workload", industry: "E-commerce", desc: "AI-powered customer support system handled routine queries, freeing the team to focus on complex issues." },
-  { title: "70% Fewer Support Tickets", industry: "Logistics", desc: "WhatsApp-integrated tracking automation eliminated manual shipment inquiry handling." },
-  { title: "3x Faster Lead Response", industry: "Financial Services", desc: "Automated lead qualification and routing cut response time from hours to minutes." },
-];
-
-const WaveDivider = ({ fillClass, flip = false, variant = 1 }: { fillClass: string; flip?: boolean; variant?: number }) => {
-  const paths: Record<number, string> = {
-    1: "M0,40 C200,120 400,0 720,60 C1040,120 1280,20 1440,80 L1440,150 L0,150 Z",
-    2: "M0,80 C180,10 480,100 800,40 C1120,-20 1320,90 1440,50 L1440,150 L0,150 Z",
-    3: "M0,20 C300,110 600,30 900,80 C1200,130 1380,40 1440,60 L1440,150 L0,150 Z",
-    4: "M0,60 C240,0 540,120 840,50 C1140,-20 1360,100 1440,40 L1440,150 L0,150 Z",
-  };
-  return (
-    <div className="relative w-full overflow-hidden leading-[0]" aria-hidden="true">
-      <svg viewBox="0 0 1440 150" preserveAspectRatio="none" className={`w-full h-[60px] md:h-[100px] lg:h-[140px] block ${flip ? "scale-y-[-1]" : ""}`}>
-        <path d={paths[variant] || paths[1]} className={fillClass} />
-      </svg>
-    </div>
-  );
-};
 
 export default function HomepageClient() {
   return (
     <Layout>
-      {/* Hero */}
-      <section className="relative overflow-hidden bg-background">
-        <div className="absolute inset-0 grid-pattern opacity-30" />
-        <div className="absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full bg-primary/8 blur-[100px]" />
-        <div className="container relative flex flex-col items-center py-24 text-center md:py-36 lg:py-44">
-          <MotionDiv initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
-            <span className="mb-4 inline-block rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 font-display text-xs font-semibold uppercase tracking-widest text-primary">
-              AI Automation & Software Development Studio
+
+      {/* ── HERO ── */}
+      <section className="relative overflow-hidden bg-[--color-background]">
+        <div className="absolute inset-0 grid-pattern" />
+        <div className="absolute -top-40 right-0 w-[600px] h-[600px] rounded-full bg-[--color-primary]/5 blur-[120px] pointer-events-none" />
+        <div className="wrap relative py-28 md:py-40 lg:py-48">
+          <MotionDiv initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="max-w-3xl">
+            <span className="mb-6 inline-block rounded-full border border-[--color-primary]/30 bg-[--color-primary]/10 px-4 py-1.5 font-display text-xs font-semibold uppercase tracking-widest text-[--color-primary]">
+              AI Operations Partner
             </span>
-          </MotionDiv>
-          <MotionDiv initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.1 }}>
-            <h1 className="font-display text-4xl font-bold leading-[1.1] text-foreground md:text-6xl lg:text-7xl max-w-4xl">
-              Intelligent Agents for the Modern{" "}<span className="text-gradient-gold">Enterprise</span>
+            <h1 className="font-display text-5xl font-bold leading-[1.05] text-[--color-foreground] md:text-6xl lg:text-7xl">
+              We run your operations<br />
+              using <span className="text-gradient-gold">AI systems.</span>
             </h1>
+            <p className="mt-6 max-w-xl font-body text-xl text-[--color-muted-foreground] leading-relaxed">
+              We replace manual business operations with AI-driven systems that execute work automatically — so your team stops doing repetitive work and starts focusing on growth.
+            </p>
+            <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+              <Link href="/contact">
+                <Button variant="hero" size="lg" className="text-base px-8">
+                  Book an Operations Review <ArrowRight className="ml-2" size={18} />
+                </Button>
+              </Link>
+              <a href="https://wa.me/2349000000000" target="_blank" rel="noopener noreferrer">
+                <Button variant="hero-outline" size="lg" className="text-base px-8">
+                  Chat on WhatsApp
+                </Button>
+              </a>
+            </div>
           </MotionDiv>
-          <MotionDiv initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }}>
-            <p className="mt-6 max-w-2xl font-body text-lg text-muted-foreground md:text-xl">
-              We build intelligent automation workflows and refined digital experiences for businesses ready to operate at the next level.
+        </div>
+      </section>
+
+      {/* ── PROBLEM ── */}
+      <section className="bg-[--color-card] border-y border-[--color-border]">
+        <div className="wrap py-16 md:py-24">
+          <MotionDiv {...fadeUp} className="max-w-2xl mb-12">
+            <span className="mb-3 inline-block font-display text-xs font-semibold uppercase tracking-widest text-[--color-primary]">The Problem</span>
+            <h2 className="font-display text-3xl font-bold text-[--color-foreground] md:text-4xl">
+              Your business runs on people doing work that systems should be doing.
+            </h2>
+          </MotionDiv>
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {problems.map((p, i) => (
+              <MotionDiv key={i} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.07 }} className="flex items-start gap-3 rounded-xl border border-[--color-border] bg-[--color-secondary]/40 px-5 py-4">
+                <span className="mt-0.5 shrink-0 text-[--color-primary]">✕</span>
+                <span className="font-body text-sm text-[--color-foreground]">{p}</span>
+              </MotionDiv>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── REFRAME ── */}
+      <section className="bg-[--color-background]">
+        <div className="wrap py-16 md:py-24 text-center">
+          <MotionDiv {...fadeUp} className="mx-auto max-w-3xl">
+            <p className="font-display text-2xl font-semibold text-[--color-foreground] md:text-3xl lg:text-4xl leading-snug">
+              You don't need more tools.<br />
+              <span className="text-gradient-gold">You need systems that execute work automatically.</span>
+            </p>
+            <p className="mt-6 font-body text-lg text-[--color-muted-foreground]">
+              Àrokò Labs acts as your operations layer — we map what your team does manually, then replace it with automated systems that run without anyone in the loop.
             </p>
           </MotionDiv>
-          <MotionDiv initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.3 }} className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Link href="/contact"><Button variant="hero" size="lg" className="text-base">Book A Free Audit <ArrowRight className="ml-1" size={18} /></Button></Link>
-            <Link href="/solutions"><Button variant="hero-outline" size="lg" className="text-base">See Solutions</Button></Link>
-          </MotionDiv>
         </div>
       </section>
 
-      <WaveDivider fillClass="fill-card" variant={1} />
-
-      {/* Problem */}
-      <section className="bg-card">
-        <div className="container py-12 md:py-20">
-          <SectionHeading label="The Problem" title="Your Business Should Run Like a System, Not a Set of Tasks." description="Nigerian enterprises in 2026 face unique pressures. Manual processes aren't just inefficient — they're existential risks." />
-          <MotionDiv {...fadeUp} className="mx-auto grid max-w-4xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {[
-              { label: "High Operational Costs", detail: "Manual data entry is an invisible tax on your growth." },
-              { label: "Naira Volatility", detail: "Efficiency is no longer optional — it's your best hedge against inflation." },
-              { label: "Cognitive Noise", detail: "Stop managing tasks. Start managing outcomes." },
-              { label: "Disconnected Systems", detail: "Excel, WhatsApp, and email shouldn't be your integration layer." },
-              { label: "Lost Leads", detail: "Slow follow-ups cost you deals every single day." },
-              { label: "Compliance Gaps", detail: "Manual document handling creates regulatory exposure." },
-            ].map((item) => (
-              <div key={item.label} className="rounded-lg border border-border bg-secondary/50 px-5 py-4">
-                <div className="flex items-center gap-2 mb-1">
-                  <span className="text-primary font-display text-sm font-semibold">✕</span>
-                  <span className="font-display text-sm font-semibold text-foreground">{item.label}</span>
+      {/* ── PACKAGES ── */}
+      <section className="bg-[--color-card] border-y border-[--color-border]">
+        <div className="wrap py-16 md:py-24">
+          <MotionDiv {...fadeUp} className="mb-12 text-center">
+            <span className="mb-3 inline-block font-display text-xs font-semibold uppercase tracking-widest text-[--color-primary]">How We Work</span>
+            <h2 className="font-display text-3xl font-bold text-[--color-foreground] md:text-4xl">Three layers. One outcome: fewer humans in the loop.</h2>
+          </MotionDiv>
+          <div className="grid gap-6 md:grid-cols-3">
+            {packages.map((pkg, i) => (
+              <MotionDiv key={pkg.name} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.12 }} className={`relative flex flex-col rounded-2xl border p-8 ${pkg.featured ? "border-[--color-primary] shadow-gold bg-[--color-primary]/5" : "border-[--color-border] bg-[--color-background]"}`}>
+                {pkg.featured && (
+                  <span className="absolute -top-3 left-8 rounded-full bg-[--color-primary] px-3 py-1 font-display text-xs font-semibold text-[--color-primary-foreground]">Most Popular</span>
+                )}
+                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-[--color-primary]/10">
+                  <pkg.icon className="text-[--color-primary]" size={24} />
                 </div>
-                <p className="font-body text-xs text-muted-foreground">{item.detail}</p>
-              </div>
-            ))}
-          </MotionDiv>
-        </div>
-      </section>
-
-      <WaveDivider fillClass="fill-background" variant={2} flip />
-
-      {/* Solutions */}
-      <section className="bg-background">
-        <div className="container py-12 md:py-20">
-          <SectionHeading label="What We Do" title="Automation That Transforms Operations" />
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {solutions.map((s, i) => (
-              <MotionDiv key={s.title} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.1 }}>
-                <Link href={s.link} className="group flex h-full flex-col rounded-xl border border-border bg-gradient-card p-6 shadow-card transition-all hover:border-primary/30 hover:shadow-gold">
-                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-                    <s.icon className="text-primary" size={24} />
+                <h3 className="mb-3 font-display text-xl font-bold text-[--color-foreground]">{pkg.name}</h3>
+                <p className="flex-1 font-body text-sm leading-relaxed text-[--color-muted-foreground]">{pkg.desc}</p>
+                <div className="mt-6 space-y-2 border-t border-[--color-border] pt-5">
+                  <div className="flex items-center gap-2 font-body text-xs text-[--color-muted-foreground]">
+                    <CheckCircle size={13} className="text-[--color-primary]" />
+                    <span>{pkg.deliverable}</span>
                   </div>
-                  <h3 className="mb-2 font-display text-lg font-semibold text-foreground">{s.title}</h3>
-                  <p className="flex-1 font-body text-sm text-muted-foreground">{s.desc}</p>
-                  <span className="mt-4 inline-flex items-center font-display text-sm font-medium text-primary opacity-0 transition-opacity group-hover:opacity-100">
-                    Learn more <ArrowRight className="ml-1" size={14} />
-                  </span>
-                </Link>
-              </MotionDiv>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <WaveDivider fillClass="fill-background" variant={4} flip />
-
-      {/* The Àrokò Method */}
-      <section className="bg-background">
-        <div className="container py-12 md:py-20">
-          <SectionHeading label="The Àrokò Method" title="How We Work" description="We demystify AI adoption in four clear steps." />
-          <div className="mx-auto grid max-w-4xl gap-8 md:grid-cols-4">
-            {steps.map((step, i) => (
-              <MotionDiv key={step.num} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.15 }} className="relative text-center">
-                <span className="font-display text-5xl font-bold text-primary/20">{step.num}</span>
-                <h3 className="mt-2 font-display text-xl font-semibold text-foreground">{step.title}</h3>
-                <p className="mt-2 font-body text-sm text-muted-foreground">{step.desc}</p>
-              </MotionDiv>
-            ))}
-          </div>
-          <MotionDiv {...fadeUp} className="mt-12 text-center">
-            <Link href="/contact"><Button variant="hero" size="lg">Schedule an Audit <ArrowRight className="ml-1" size={18} /></Button></Link>
-          </MotionDiv>
-        </div>
-      </section>
-
-      <WaveDivider fillClass="fill-card" variant={2} />
-
-      {/* Lab Projects */}
-      <section className="bg-card">
-        <div className="container py-12 md:py-20">
-          <SectionHeading label="Lab Projects" title="Built, Not Pitched" description="We show, don't tell. Explore working systems from our lab." />
-          <div className="grid gap-6 md:grid-cols-3">
-            {labProjects.map((project, i) => (
-              <MotionDiv key={project.title} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.1 }} className="group flex flex-col rounded-xl border border-border bg-gradient-card p-6 shadow-card transition-all hover:border-primary/30">
-                <span className="mb-3 inline-block w-fit rounded-full bg-primary/10 px-3 py-1 font-display text-xs font-semibold text-primary">{project.tag}</span>
-                <h3 className="mb-2 font-display text-lg font-semibold text-foreground">{project.title}</h3>
-                <p className="flex-1 font-body text-sm text-muted-foreground">{project.desc}</p>
-                <Link href={project.link} className="mt-4 inline-flex items-center font-display text-sm font-medium text-primary">
-                  {project.cta} <ExternalLink className="ml-1" size={14} />
-                </Link>
-              </MotionDiv>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <WaveDivider fillClass="fill-background" variant={1} flip />
-
-      {/* Scenarios */}
-      <section className="bg-background">
-        <div className="container py-12 md:py-20">
-          <SectionHeading label="Use Cases" title="Automation Scenarios" description="See how intelligent automation transforms key business processes." />
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {scenarios.map((s, i) => (
-              <MotionDiv key={s.title} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.1 }} className="rounded-xl border border-border bg-gradient-card p-6 shadow-card">
-                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
-                  <s.icon className="text-primary" size={20} />
+                  <div className="flex items-center gap-2 font-body text-xs text-[--color-muted-foreground]">
+                    <CheckCircle size={13} className="text-[--color-primary]" />
+                    <span>{pkg.timeline}</span>
+                  </div>
                 </div>
-                <h3 className="mb-2 font-display text-base font-semibold text-foreground">{s.title}</h3>
-                <p className="font-body text-sm text-muted-foreground">{s.desc}</p>
               </MotionDiv>
             ))}
           </div>
-        </div>
-      </section>
-
-      <WaveDivider fillClass="fill-card" variant={4} />
-
-      {/* Case Studies */}
-      <section className="bg-card">
-        <div className="container py-12 md:py-20">
-          <SectionHeading label="Results" title="Measurable Automation Outcomes" />
-          <div className="grid gap-6 md:grid-cols-3">
-            {caseStudies.map((cs, i) => (
-              <MotionDiv key={cs.title} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.1 }}>
-                <Link href="/case-studies" className="group flex h-full flex-col rounded-xl border border-border bg-secondary/30 p-6 transition-all hover:border-primary/30">
-                  <span className="mb-2 font-display text-xs font-semibold uppercase tracking-wider text-primary">{cs.industry}</span>
-                  <h3 className="mb-3 font-display text-lg font-semibold text-foreground">{cs.title}</h3>
-                  <p className="flex-1 font-body text-sm text-muted-foreground">{cs.desc}</p>
-                  <span className="mt-4 inline-flex items-center font-display text-sm font-medium text-primary">Read case study <ArrowRight className="ml-1" size={14} /></span>
-                </Link>
-              </MotionDiv>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <WaveDivider fillClass="fill-background" variant={3} flip />
-
-      {/* Final CTA */}
-      <section className="bg-background">
-        <div className="container py-20 text-center md:py-28">
-          <MotionDiv {...fadeUp}>
-            <h2 className="font-display text-3xl font-bold text-foreground md:text-5xl">Let Your Systems Do the Work.</h2>
-            <p className="mx-auto mt-4 max-w-xl font-body text-lg text-muted-foreground">Stop losing time to manual processes. Let Àrokò Labs build efficient automation that scales with you.</p>
+          <MotionDiv {...fadeUp} className="mt-10 text-center">
             <Link href="/contact">
-              <Button variant="hero" size="lg" className="mt-8 text-base">Book a 15-Min Efficiency Audit <ArrowRight className="ml-1" size={18} /></Button>
+              <Button variant="hero" size="lg">Book an Operations Review <ArrowRight className="ml-2" size={18} /></Button>
             </Link>
           </MotionDiv>
         </div>
       </section>
+
+      {/* ── SYSTEM EXAMPLES ── */}
+      <section className="bg-[--color-background]">
+        <div className="wrap py-16 md:py-24">
+          <MotionDiv {...fadeUp} className="mb-12">
+            <span className="mb-3 inline-block font-display text-xs font-semibold uppercase tracking-widest text-[--color-primary]">System Examples</span>
+            <h2 className="font-display text-3xl font-bold text-[--color-foreground] md:text-4xl max-w-xl">
+              Real systems. Real operations replaced.
+            </h2>
+          </MotionDiv>
+          <div className="grid gap-6 md:grid-cols-2">
+            {systems.map((sys, i) => (
+              <MotionDiv key={sys.title} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.1 }} className="rounded-2xl border border-[--color-border] bg-[--color-card] p-7 shadow-card">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[--color-primary]/10">
+                    <sys.icon className="text-[--color-primary]" size={20} />
+                  </div>
+                  <h3 className="font-display text-lg font-semibold text-[--color-foreground]">{sys.title}</h3>
+                </div>
+                <div className="space-y-3">
+                  <div className="rounded-lg bg-[--color-secondary]/60 px-4 py-3">
+                    <p className="mb-1 font-display text-xs font-semibold uppercase tracking-wider text-[--color-muted-foreground]">Before</p>
+                    <p className="font-body text-sm text-[--color-foreground]">{sys.before}</p>
+                  </div>
+                  <div className="rounded-lg bg-[--color-primary]/8 px-4 py-3 border border-[--color-primary]/20">
+                    <p className="mb-1 font-display text-xs font-semibold uppercase tracking-wider text-[--color-primary]">After</p>
+                    <p className="font-body text-sm text-[--color-foreground]">{sys.after}</p>
+                  </div>
+                </div>
+                <div className="mt-4 inline-block rounded-full bg-[--color-primary]/10 px-4 py-1.5">
+                  <span className="font-display text-xs font-bold text-[--color-primary]">{sys.impact}</span>
+                </div>
+              </MotionDiv>
+            ))}
+          </div>
+          <MotionDiv {...fadeUp} className="mt-8">
+            <Link href="/case-studies" className="inline-flex items-center font-display text-sm font-semibold text-[--color-primary] hover:opacity-80 transition-opacity">
+              See all case studies <ArrowRight className="ml-1" size={15} />
+            </Link>
+          </MotionDiv>
+        </div>
+      </section>
+
+      {/* ── DIFFERENTIATION ── */}
+      <section className="bg-[--color-card] border-y border-[--color-border]">
+        <div className="wrap py-16 md:py-20">
+          <MotionDiv {...fadeUp} className="mx-auto max-w-4xl">
+            <div className="grid gap-8 md:grid-cols-2">
+              <div className="rounded-2xl border border-[--color-border] bg-[--color-secondary]/40 p-8">
+                <p className="mb-2 font-display text-xs font-semibold uppercase tracking-wider text-[--color-muted-foreground]">Other agencies</p>
+                <h3 className="font-display text-xl font-semibold text-[--color-foreground] mb-4">Build you a system, hand it over, move on.</h3>
+                <ul className="space-y-2">
+                  {["Project-based delivery", "You manage it after launch", "Generic automation setups", "Support costs extra"].map(t => (
+                    <li key={t} className="flex items-center gap-2 font-body text-sm text-[--color-muted-foreground]">
+                      <span className="text-[--color-destructive]">✕</span> {t}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="rounded-2xl border border-[--color-primary]/30 bg-[--color-primary]/5 p-8">
+                <p className="mb-2 font-display text-xs font-semibold uppercase tracking-wider text-[--color-primary]">Àrokò Labs</p>
+                <h3 className="font-display text-xl font-semibold text-[--color-foreground] mb-4">Own and operate your automation layer continuously.</h3>
+                <ul className="space-y-2">
+                  {["System ownership model", "We maintain + improve ongoing", "Built around your actual ops", "Retainer-based partnership"].map(t => (
+                    <li key={t} className="flex items-center gap-2 font-body text-sm text-[--color-foreground]">
+                      <CheckCircle size={14} className="text-[--color-primary] shrink-0" /> {t}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </MotionDiv>
+        </div>
+      </section>
+
+      {/* ── FINAL CTA ── */}
+      <section className="bg-[--color-background]">
+        <div className="wrap py-24 md:py-32 text-center">
+          <MotionDiv {...fadeUp} className="mx-auto max-w-2xl">
+            <h2 className="font-display text-4xl font-bold text-[--color-foreground] md:text-5xl">
+              Ready to remove humans from your operational loops?
+            </h2>
+            <p className="mx-auto mt-5 font-body text-lg text-[--color-muted-foreground]">
+              Book a free 30-minute Operations Review. We'll map your manual processes and show you exactly what can be automated.
+            </p>
+            <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+              <Link href="/contact">
+                <Button variant="hero" size="lg" className="text-base px-8">Book an Operations Review <ArrowRight className="ml-2" size={18} /></Button>
+              </Link>
+              <a href="https://wa.me/2349000000000" target="_blank" rel="noopener noreferrer">
+                <Button variant="hero-outline" size="lg" className="text-base px-8">Chat on WhatsApp</Button>
+              </a>
+            </div>
+          </MotionDiv>
+        </div>
+      </section>
+
     </Layout>
   );
 }
