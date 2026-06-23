@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://arokolabs.com"),
@@ -8,12 +9,12 @@ export const metadata: Metadata = {
     default: "Àrokò Labs — AI Operations Partner",
     template: "%s | Àrokò Labs",
   },
-  description: "We replace manual business workflows with AI-driven systems that execute work automatically.",
+  description: "We replace manual business operations with AI-driven systems that execute work automatically.",
   authors: [{ name: "Àrokò Labs" }],
   openGraph: {
     type: "website",
     siteName: "Àrokò Labs",
-    images: [{ url: "/og-image.png" }],
+    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
@@ -37,11 +38,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               name: "Àrokò Labs",
               url: "https://arokolabs.com",
               logo: "https://arokolabs.com/logo4.png",
-              description: "We replace manual business workflows with AI-driven systems that execute work automatically.",
-              sameAs: [
-                "https://www.instagram.com/arokolabs",
-                "https://www.linkedin.com/company/aroko-labs",
-              ],
+              description: "We replace manual business operations with AI-driven systems that execute work automatically.",
+              sameAs: ["https://www.instagram.com/arokolabs", "https://www.linkedin.com/company/aroko-labs"],
               contactPoint: { "@type": "ContactPoint", contactType: "sales", url: "https://arokolabs.com/contact" },
             }),
           }}
@@ -49,6 +47,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         <ThemeProvider>{children}</ThemeProvider>
+        <Toaster richColors position="top-right" />
       </body>
     </html>
   );
